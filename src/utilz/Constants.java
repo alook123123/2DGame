@@ -33,6 +33,10 @@ public class Constants {
                     return 3;
                 case IDLE:
                     return 5;
+                case JUMPING:
+                    return 3;
+                case FALLING:
+                    return 3;
                 default:
                     return 0;
             }

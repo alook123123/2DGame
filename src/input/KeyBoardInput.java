@@ -4,9 +4,7 @@ import main.GamePanel;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import static utilz.Constants.Directions.*;
 
 public class KeyBoardInput implements KeyListener {
 
@@ -32,6 +30,9 @@ public class KeyBoardInput implements KeyListener {
                 case KeyEvent.VK_A:
                     gamePanel.getGame().getPlayer().setLeft(true);
                     break;
+                case KeyEvent.VK_SPACE:
+                    gamePanel.getGame().getPlayer().setJump(true);
+                    break;
             }
         }
 
@@ -44,6 +45,9 @@ public class KeyBoardInput implements KeyListener {
                     break;
                 case KeyEvent.VK_A:
                     gamePanel.getGame().getPlayer().setLeft(false);
+                    break;
+                case KeyEvent.VK_SPACE:
+                    gamePanel.getGame().getPlayer().setJump(false);
                     break;
             }
         }
