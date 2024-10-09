@@ -21,7 +21,7 @@ public class Player extends Entity{
     private int[][] lvlData;
 
     //Jumping , Gravity
-    private float airSpeed = 0f;
+    private float airSpeed = 0;
     private float gravity = 0.04f * Game.SCALE;
     private float jumpSpeed =  -2.25f * Game.SCALE;
     private float fallSpeedAfterCollison  = 0.5f *Game.SCALE;
@@ -37,7 +37,7 @@ public class Player extends Entity{
         loadAnimations();
 
         //Hitbox width, height scale
-        initHitbox(x,y,22 * Game.SCALE, 15* Game.SCALE);
+        initHitbox(x,y,22 * Game.SCALE, 16* Game.SCALE);
 
 
     }
@@ -73,10 +73,9 @@ public class Player extends Entity{
             playerAction = IDLE;
         }
 
-
         if(inAir)
         {
-            if( airSpeed < 0 )
+            if( airSpeed <=0 )
             {
                 playerAction = JUMPING;
             } else
@@ -155,17 +154,12 @@ public class Player extends Entity{
             } else
             {
                 hitbox.y = getEntityYPosUnderRoofOrAboveFloor(hitbox,airSpeed);
-                if (airSpeed > 0)
-                {
+                if (airSpeed > 0f)
                     resetInAir();
-                } else
-                {
+                 else
                     airSpeed = fallSpeedAfterCollison;
-                }
-
                 updateXPos(xSpeed);
             }
-
         } else
             {
                 updateXPos(xSpeed);
@@ -184,7 +178,7 @@ public class Player extends Entity{
     private void resetInAir()
     {
         inAir = false;
-        airSpeed = 0;
+        airSpeed = 0f;
     }
 
     private void updateXPos(float xSpeed)
