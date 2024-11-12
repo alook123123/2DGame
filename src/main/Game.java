@@ -129,4 +129,15 @@ public class Game implements Runnable{
     {
         return  player;
     }
+
+
+    //temp
+    public GameWindow getGameWindow() {
+        return gameWindow;
+    }
+
+    //t
+    public void setGameWindow(GameWindow gameWindow) {
+        this.gameWindow = gameWindow;
+    }
 }

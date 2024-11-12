@@ -12,7 +12,7 @@ public class LoadSave {
 
     public static final String PLAYER_ATLAS = "PlayerSprite.png";
     public static final String LEVEL_ATLAS = "outside_sprites.png";
-    public static final String LEVEL_ONE_DATA = "level_one_data.png";
+    public static final String LEVEL_ONE_DATA = "level_one_data (1) (3).png";
 
     public static BufferedImage getSpriteAtlas(String fileName)
     {

@@ -75,7 +75,7 @@ public class Player extends Entity{
 
         if(inAir)
         {
-            if( airSpeed <=0 )
+            if( airSpeed < 0 )
             {
                 playerAction = JUMPING;
             } else
@@ -116,12 +116,16 @@ public class Player extends Entity{
 
         moving = false;
 
-        if (!left && !right && !inAir) return;
-
-        if (jump)
+        if (jump )
         {
             jump();
         }
+
+        // if change this code line to the top of the jump line it will block the jump
+        // and you can only jump when moving
+        if (!left && !right && !inAir) return;
+
+
 
         float xSpeed = 0;
 
