@@ -4,8 +4,8 @@ import input.KeyBoardInput;
 import input.MouseInput;
 
 import java.awt.Dimension;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics;
 import static main.Game.*;
 
 public class GamePanel extends JPanel {
@@ -13,6 +13,7 @@ public class GamePanel extends JPanel {
     //Variables
     private MouseInput mouseInput;
     private Game game;
+
     public GamePanel(Game game)
     {
         this.game = game;

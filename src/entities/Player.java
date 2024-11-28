@@ -15,7 +15,7 @@ public class Player extends Entity{
     private BufferedImage[][] animations;
     private int aniTick, aniIndex, aniSpeed = 20;
     private int playerAction = IDLE;
-    private boolean left, right, jump;
+    private boolean left, right, jump, down, up;
     private boolean moving = false;
     private float playerSpeed = 2;
     private int[][] lvlData;
@@ -209,7 +209,6 @@ public class Player extends Entity{
 
     private void loadAnimations()
     {
-
         BufferedImage img = LoadSave.getSpriteAtlas(LoadSave.PLAYER_ATLAS);
         //Player sprite matrix
         animations = new BufferedImage[5][4];
@@ -232,12 +231,29 @@ public class Player extends Entity{
         }
     }
 
-    public void resetDirBoolean()
+    public void resetDirBooleans()
     {
         left = false;
-        right =false;
+        right = false;
+        up = false;
+        down = false;
     }
 
+    public boolean isUp() {
+        return up;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
 
     public void setLeft(boolean left)
     {
