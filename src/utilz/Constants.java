@@ -1,7 +1,22 @@
 package utilz;
 
+import main.Game;
+
+//import static utilz.Constants.UI.Buttons.B_HEIGHT_DEFAULT;
+
+//import javax.print.attribute.standard.OutputBin;
+//import java.security.PublicKey;
+
 public class Constants {
 
+    public static class UI{
+        public static class Buttons {
+            public static final int B_WIDTH_DEFAULT = 140; //HOW WIDTH OF THE BUTTON
+            public static final int B_HEIGHT_DEFAULT = 56;
+            public static final int B_WIDTH = (int) (B_WIDTH_DEFAULT * Game.SCALE);
+            public static final int B_HEIGHT = (int) (Game.SCALE * B_HEIGHT_DEFAULT);
+        }
+    }
     public static class Directions
     {
         public static final int LEFT = 0;

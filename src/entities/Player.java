@@ -17,7 +17,7 @@ public class Player extends Entity{
     private int playerAction = IDLE;
     private boolean left, right, jump, down, up;
     private boolean moving = false;
-    private float playerSpeed = 2;
+    private float playerSpeed = 1.0f * Game.SCALE;
     private int[][] lvlData;
 
     //Jumping , Gravity
@@ -42,7 +42,7 @@ public class Player extends Entity{
         loadAnimations();
 
         //Hitbox width, height scale
-        initHitbox(x,y,22 * Game.SCALE, 16* Game.SCALE);
+        initHitbox(x,y,(int) (22 * Game.SCALE), (int) (16* Game.SCALE));
 
 
     }
@@ -209,7 +209,7 @@ public class Player extends Entity{
 
     private void loadAnimations()
     {
-        BufferedImage img = LoadSave.getSpriteAtlas(LoadSave.PLAYER_ATLAS);
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
         //Player sprite matrix
         animations = new BufferedImage[5][4];
         for (int j = 0; j< animations.length; j++)

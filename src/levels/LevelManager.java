@@ -25,7 +25,7 @@ public class LevelManager {
     private void importOutSideSprites()
     {
         levelSprite = new BufferedImage[64];
-        BufferedImage img = LoadSave.getSpriteAtlas(LoadSave.LEVEL_ATLAS);
+        BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
 
         for (int j = 0; j < 4; j++) // Map Sprite Height
         {
