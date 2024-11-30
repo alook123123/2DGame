@@ -32,7 +32,7 @@ public class PauseOverlay {
     }
 
     private void createVolumeButton() {
-        int vX = (int) (309 * Game.SCALE);
+        int vX = (int) (309 * Game.SCALE); //vX: volume X
         int vY = (int) (278 * Game.SCALE);
         volumeButton = new VolumeButton(vX, vY, SLIDER_WIDTH, VOLUME_HEIGHT);
     }
