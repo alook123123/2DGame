@@ -13,7 +13,9 @@ import entities.EnemyManager;
 import entities.Player;
 import levels.LevelManager;
 import main.Game;
+import objects.GameObject;
 import objects.ObjectManager;
+
 import ui.GameCompletedOverlay;
 import ui.GameOverOverlay;
 import ui.LevelCompletedOverlay;
@@ -21,6 +23,8 @@ import ui.PauseOverlay;
 import utilz.LoadSave;
 import effects.DialogueEffect;
 import effects.Rain;
+
+
 
 import static utilz.Constants.Environment.*;
 import static utilz.Constants.Dialogue.*;
@@ -255,8 +259,10 @@ public class Playing extends State implements Statemethods {
 		objectManager.draw(g, xLvlOffset);
 		enemyManager.draw(g, xLvlOffset);
 		player.render(g, xLvlOffset);
+
 		objectManager.drawBackgroundTrees(g, xLvlOffset);
 		drawDialogue(g, xLvlOffset);
+
 
 		if (paused) {
 			g.setColor(new Color(0, 0, 0, 150));
@@ -343,11 +349,18 @@ public class Playing extends State implements Statemethods {
 		if (!gameOver && !gameCompleted && !lvlCompleted)
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_A:
+				//normal moving
 				player.setLeft(true);
+				//hold to move
+//				player.setLeft(false);
+//				player.setJumpHeld(true);
 				break;
 			case KeyEvent.VK_D:
-
+				//normal moving
 				player.setRight(true);
+				//hold to move
+//				player.setRight(false);
+//				player.setJumpHeld(true);
 				break;
 			case KeyEvent.VK_SPACE:
 				player.setJump(false);
@@ -363,10 +376,22 @@ public class Playing extends State implements Statemethods {
 		if (!gameOver && !gameCompleted && !lvlCompleted)
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_A:
+				//normal moving
 				player.setLeft(false);
+				//Hold to move
+//				player.setLeft(true);
+//				player.setJumpHeld(false);
+//				System.out.println(player.getJumpChargeTime());
+//				player.setJumpChargeTime(0);
 				break;
 			case KeyEvent.VK_D:
+				//normal moving
 				player.setRight(false);
+				//Hold to move
+//				player.setRight(true);
+//				player.setJumpHeld(false);
+//				System.out.println(player.getJumpChargeTime());
+//				player.setJumpChargeTime(0);
 				break;
 			case KeyEvent.VK_SPACE:
 				player.setJump(true);

@@ -212,6 +212,9 @@ public class ObjectManager {
 		drawCannons(g, xLvlOffset);
 		drawProjectiles(g, xLvlOffset);
 		drawGrass(g, xLvlOffset);
+
+
+
 	}
 
 	private void drawGrass(Graphics g, int xLvlOffset) {
@@ -250,9 +253,9 @@ public class ObjectManager {
 	}
 
 	private void drawTraps(Graphics g, int xLvlOffset) {
-		for (Spike s : currentLevel.getSpikes())
+		for (Spike s : currentLevel.getSpikes()) {
 			g.drawImage(spikeImg, (int) (s.getHitbox().x - xLvlOffset), (int) (s.getHitbox().y - s.getyDrawOffset()), SPIKE_WIDTH, SPIKE_HEIGHT, null);
-
+		}
 	}
 
 	private void drawContainers(Graphics g, int xLvlOffset) {

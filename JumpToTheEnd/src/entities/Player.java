@@ -27,13 +27,13 @@ public class Player extends Entity {
 	private float yDrawOffset = 4 * Game.SCALE;
 
 	// Jumping / Gravity
-	private float jumpSpeed = -2.25f * Game.SCALE;
+	private float jumpSpeed = -2.5f * Game.SCALE;
 	private float jumpBackSpeed = -2.25f * Game.SCALE;
 	private float fallSpeedAfterCollision = 0.5f * Game.SCALE;
 	private boolean jumpHeld = false; // Tracks if the jump key is being held
 	private float jumpChargeTime = 0f; // How long the jump key has been held
 	private final float maxJumpChargeTime = 2f; // Maximum time the jump can be charged (in seconds)
-	private final float baseJumpSpeed = -1.125f * Game.SCALE; // Minimum jump speed
+	private final float baseJumpSpeed = -1.25f * Game.SCALE; // Minimum jump speed
 	private final float maxJumpSpeed = -2.25f * Game.SCALE; // Maximum jump speed (for max charge)
 	private float jumpForce = 0f;
 
@@ -89,7 +89,7 @@ public class Player extends Entity {
 		this.currentHealth = maxHealth;
 		this.walkSpeed = Game.SCALE * 1.0f;
 		loadAnimations();
-		initHitbox(20, 27);
+		initHitbox(19, 27);
 		initAttackBox();
 	}
 
@@ -362,17 +362,23 @@ public class Player extends Entity {
 
 		//float xSpeed = 0;
 
-		if (left && !right) {
-			//xSpeed -= walkSpeed;
+		if (left && !right && !inAir) {
+			xSpeed -= walkSpeed;
 			direction = -1;
 			flipX = width;
 			flipW = -1;
+
+//			jump();
+//			decideSpeed = walkSpeed;
 		}
-		if (right && !left) {
-			//xSpeed += walkSpeed;
+		if (right && !left && !inAir ) {
+			xSpeed += walkSpeed;
 			direction = 1;
 			flipX = 0;
 			flipW = 1;
+
+//			jump();
+//			decideSpeed = walkSpeed;
 		}
 
 		if (powerAttackActive) {
@@ -414,6 +420,8 @@ public class Player extends Entity {
 	private void jump() {
 		if (inAir) {
 			jump =false;
+//			left = false;
+//			right =false;
 			return;
 		}
 		playing.getGame().getAudioPlayer().playEffect(AudioPlayer.JUMP);
@@ -456,7 +464,8 @@ public class Player extends Entity {
 				newState(HIT);
 		}
 
-		currentHealth += value;
+		//currentHealth += value;
+		currentHealth += 0; //no health change when get hit
 		currentHealth = Math.max(Math.min(currentHealth, maxHealth), 0);
 	}
 
@@ -586,7 +595,6 @@ public class Player extends Entity {
 		{
 			return; // Prevent overlapping knockback effects
 		}
-
 		knockback = true;
 		knockbackDirection = direction; // Set direction: -1 for left, 1 for right
 		knockbackStartTime = System.currentTimeMillis();
