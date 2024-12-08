@@ -71,9 +71,9 @@ public class Playing extends State implements Statemethods {
 	// you want
 	// it.
 
-	private boolean drawShip = true;
-	private int shipAni, shipTick, shipDir = 1;
-	private float shipHeightDelta, shipHeightChange = 0.05f * Game.SCALE;
+//	private boolean drawShip = true;
+//	private int shipAni, shipTick, shipDir = 1;
+//	private float shipHeightDelta, shipHeightChange = 0.05f * Game.SCALE;
 
 	public Playing(Game game) {
 		super(game);
@@ -86,10 +86,10 @@ public class Playing extends State implements Statemethods {
 		for (int i = 0; i < smallCloudsPos.length; i++)
 			smallCloudsPos[i] = (int) (90 * Game.SCALE) + rnd.nextInt((int) (100 * Game.SCALE));
 
-		shipImgs = new BufferedImage[4];
-		BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SHIP);
-		for (int i = 0; i < shipImgs.length; i++)
-			shipImgs[i] = temp.getSubimage(i * 78, 0, 78, 72);
+//		shipImgs = new BufferedImage[4];
+//		BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.SHIP);
+//		for (int i = 0; i < shipImgs.length; i++)
+//			shipImgs[i] = temp.getSubimage(i * 78, 0, 78, 72);
 
 		loadDialogue();
 		calcLvlOffset();
@@ -131,7 +131,7 @@ public class Playing extends State implements Statemethods {
 		levelManager.loadNextLevel();
 		player.setSpawn(levelManager.getCurrentLevel().getPlayerSpawn());
 		resetAll();
-		drawShip = false;
+		//drawShip = false;
 	}
 
 	private void loadStartLevel() {
@@ -181,29 +181,29 @@ public class Playing extends State implements Statemethods {
 			player.update();
 			enemyManager.update(levelManager.getCurrentLevel().getLevelData());
 			checkCloseToBorder();
-			if (drawShip)
-				updateShipAni();
+//			if (drawShip)
+//				updateShipAni();
 		}
 	}
 
-	private void updateShipAni() {
-		shipTick++;
-		if (shipTick >= 35) {
-			shipTick = 0;
-			shipAni++;
-			if (shipAni >= 4)
-				shipAni = 0;
-		}
-
-		shipHeightDelta += shipHeightChange * shipDir;
-		shipHeightDelta = Math.max(Math.min(10 * Game.SCALE, shipHeightDelta), 0);
-
-		if (shipHeightDelta == 0)
-			shipDir = 1;
-		else if (shipHeightDelta == 10 * Game.SCALE)
-			shipDir = -1;
-
-	}
+//	private void updateShipAni() {
+//		shipTick++;
+//		if (shipTick >= 35) {
+//			shipTick = 0;
+//			shipAni++;
+//			if (shipAni >= 4)
+//				shipAni = 0;
+//		}
+//
+//		shipHeightDelta += shipHeightChange * shipDir;
+//		shipHeightDelta = Math.max(Math.min(10 * Game.SCALE, shipHeightDelta), 0);
+//
+//		if (shipHeightDelta == 0)
+//			shipDir = 1;
+//		else if (shipHeightDelta == 10 * Game.SCALE)
+//			shipDir = -1;
+//
+//	}
 
 	private void updateDialogue() {
 		for (DialogueEffect de : dialogEffects)
@@ -252,8 +252,8 @@ public class Playing extends State implements Statemethods {
 		if (drawRain)
 			rain.draw(g, xLvlOffset);
 
-		if (drawShip)
-			g.drawImage(shipImgs[shipAni], (int) (100 * Game.SCALE) - xLvlOffset, (int) ((288 * Game.SCALE) + shipHeightDelta), (int) (78 * Game.SCALE), (int) (72 * Game.SCALE), null);
+//		if (drawShip)
+//			g.drawImage(shipImgs[shipAni], (int) (100 * Game.SCALE) - xLvlOffset, (int) ((288 * Game.SCALE) + shipHeightDelta), (int) (78 * Game.SCALE), (int) (72 * Game.SCALE), null);
 
 		levelManager.draw(g, xLvlOffset);
 		objectManager.draw(g, xLvlOffset);
@@ -378,6 +378,7 @@ public class Playing extends State implements Statemethods {
 			case KeyEvent.VK_A:
 				//normal moving
 				player.setLeft(false);
+
 				//Hold to move
 //				player.setLeft(true);
 //				player.setJumpHeld(false);
@@ -387,6 +388,7 @@ public class Playing extends State implements Statemethods {
 			case KeyEvent.VK_D:
 				//normal moving
 				player.setRight(false);
+
 				//Hold to move
 //				player.setRight(true);
 //				player.setJumpHeld(false);
@@ -396,7 +398,7 @@ public class Playing extends State implements Statemethods {
 			case KeyEvent.VK_SPACE:
 				player.setJump(true);
 				player.setJumpHeld(false);
-				System.out.println(player.getJumpChargeTime());
+//				System.out.println(player.getJumpChargeTime());    //Debug Hold jump
 				player.setJumpChargeTime(0);
 				break;
 			}

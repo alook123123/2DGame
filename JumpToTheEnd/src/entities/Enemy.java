@@ -146,7 +146,8 @@ public abstract class Enemy extends Entity {
 	protected void checkPlayerHit(Rectangle2D.Float attackBox, Player player) {
 		if (attackBox.intersects(player.hitbox))
 			player.changeHealth(-GetEnemyDmg(enemyType), this);
-		else {
+		else
+		{
 			if (enemyType == SHARK)
 				return;
 		}

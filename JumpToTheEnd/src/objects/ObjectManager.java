@@ -46,7 +46,6 @@ public class ObjectManager {
 		for (Spike s : currentLevel.getSpikes())
 			if (s.getHitbox().intersects(p.getHitbox()))
 			{
-
 				//p.kill();
 				p.applyKnockback(-1);
 			}

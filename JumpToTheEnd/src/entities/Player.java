@@ -51,17 +51,17 @@ public class Player extends Entity {
 	private int statusBarX = (int) (10 * Game.SCALE);
 	private int statusBarY = (int) (10 * Game.SCALE);
 
-	private int healthBarWidth = (int) (150 * Game.SCALE);
-	private int healthBarHeight = (int) (4 * Game.SCALE);
-	private int healthBarXStart = (int) (34 * Game.SCALE);
-	private int healthBarYStart = (int) (14 * Game.SCALE);
-	private int healthWidth = healthBarWidth;
+//	private int healthBarWidth = (int) (150 * Game.SCALE);
+//	private int healthBarHeight = (int) (4 * Game.SCALE);
+//	private int healthBarXStart = (int) (34 * Game.SCALE);
+//	private int healthBarYStart = (int) (14 * Game.SCALE);
+//	private int healthWidth = healthBarWidth;
 
-	private int powerBarWidth = (int) (104 * Game.SCALE);
-	private int powerBarHeight = (int) (2 * Game.SCALE);
-	private int powerBarXStart = (int) (44 * Game.SCALE);
-	private int powerBarYStart = (int) (34 * Game.SCALE);
-	private int powerWidth = powerBarWidth;
+//	private int powerBarWidth = (int) (104 * Game.SCALE);
+//	private int powerBarHeight = (int) (2 * Game.SCALE);
+//	private int powerBarXStart = (int) (44 * Game.SCALE);
+//	private int powerBarYStart = (int) (34 * Game.SCALE);
+//	private int powerWidth = powerBarWidth;
 	private int powerMaxValue = 200;
 	private int powerValue = powerMaxValue;
 
@@ -75,8 +75,8 @@ public class Player extends Entity {
 
 	private boolean powerAttackActive;
 	private int powerAttackTick;
-	private int powerGrowSpeed = 15;
-	private int powerGrowTick;
+//	private int powerGrowSpeed = 15;
+//	private int powerGrowTick;
 
 	private boolean knockback = false;
 	private long knockbackStartTime = 0;
@@ -112,8 +112,8 @@ public class Player extends Entity {
 	}
 
 	public void update() {
-		updateHealthBar();
-		updatePowerBar();
+//		updateHealthBar();
+//		updatePowerBar();
 
 		if (currentHealth <= 0) {
 			if (state != DEAD) {
@@ -231,19 +231,19 @@ public class Player extends Entity {
 		attackBox.y = hitbox.y + (Game.SCALE * 10);
 	}
 
-	private void updateHealthBar() {
-		healthWidth = (int) ((currentHealth / (float) maxHealth) * healthBarWidth);
-	}
+//	private void updateHealthBar() {
+//		healthWidth = (int) ((currentHealth / (float) maxHealth) * healthBarWidth);
+//	}
 
-	private void updatePowerBar() {
-		powerWidth = (int) ((powerValue / (float) powerMaxValue) * powerBarWidth);
-
-		powerGrowTick++;
-		if (powerGrowTick >= powerGrowSpeed) {
-			powerGrowTick = 0;
-			changePower(1);
-		}
-	}
+//	private void updatePowerBar() {
+//		powerWidth = (int) ((powerValue / (float) powerMaxValue) * powerBarWidth);
+//
+//		powerGrowTick++;
+//		if (powerGrowTick >= powerGrowSpeed) {
+//			powerGrowTick = 0;
+//			changePower(1);
+//		}
+//	}
 
 	public void render(Graphics g, int lvlOffset) {
 		g.drawImage(animations[state][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX, (int) (hitbox.y - yDrawOffset + (int) (pushDrawOffset)), width * flipW, height, null);
@@ -256,13 +256,13 @@ public class Player extends Entity {
 		// Background ui
 		g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
 
-		// Health bar
-		g.setColor(Color.red);
-		g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
-
-		// Power Bar
-		g.setColor(Color.yellow);
-		g.fillRect(powerBarXStart + statusBarX, powerBarYStart + statusBarY, powerWidth, powerBarHeight);
+//		// Health bar
+//		g.setColor(Color.red);
+//		g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
+//
+//		// Power Bar
+//		g.setColor(Color.yellow);
+//		g.fillRect(powerBarXStart + statusBarX, powerBarYStart + statusBarY, powerWidth, powerBarHeight);
 	}
 
 	private void updateAnimationTick() {
@@ -365,7 +365,7 @@ public class Player extends Entity {
 				decideSpeed = 0.9f*Game.SCALE;
 				long elapsed = System.currentTimeMillis() - doubleJumpStartTime;
 				// End Double Jump effect after n seconds
-				if (elapsed >= 3000) {
+				if (elapsed >= 7000) {
 					this.isDoubleJump = false; // Reset to hold jump
 				}
 
@@ -522,8 +522,8 @@ public class Player extends Entity {
 		if (state == HIT)
 			return;
 		changeHealth(value);
-		pushBackOffsetDir = UP;
-		pushDrawOffset = 0;
+//		pushBackOffsetDir = UP;
+//		pushDrawOffset = 0;
 
 		if (e.getHitbox().x < hitbox.x)
 			pushBackDir = RIGHT;
@@ -547,7 +547,7 @@ public class Player extends Entity {
 			for (int i = 0; i < animations[j].length; i++)
 				animations[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
 
-		statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
+		//statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
 	}
 
 	public void loadLvlData(int[][] lvlData) {
@@ -598,10 +598,6 @@ public class Player extends Entity {
 
 	}
 
-	public  void setDoubleJump(boolean isDoubleJump)
-	{
-
-	}
 
 	public void resetAll() {
 		resetDirBooleans();
