@@ -69,10 +69,10 @@ public class ObjectManager {
 	}
 
 	public void applyEffectToPlayer(Potion p) {
-		if (p.getObjType() == RED_POTION)
-			playing.getPlayer().changeHealth(RED_POTION_VALUE);
+		if (p.getObjType() == BLUE_POTION)
+			playing.getPlayer().changeDoubleJump(true);
 		else
-			playing.getPlayer().changePower(BLUE_POTION_VALUE);
+			playing.getPlayer().changePower(RED_POTION_VALUE);
 	}
 
 	public void checkObjectHit(Rectangle2D.Float attackbox) {

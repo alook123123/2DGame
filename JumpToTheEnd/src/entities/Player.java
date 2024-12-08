@@ -27,15 +27,21 @@ public class Player extends Entity {
 	private float yDrawOffset = 4 * Game.SCALE;
 
 	// Jumping / Gravity
-	private float jumpSpeed = -2.5f * Game.SCALE;
+	//private float jumpSpeed = -2.5f * Game.SCALE;
 	private float jumpBackSpeed = -2.25f * Game.SCALE;
 	private float fallSpeedAfterCollision = 0.5f * Game.SCALE;
 	private boolean jumpHeld = false; // Tracks if the jump key is being held
 	private float jumpChargeTime = 0f; // How long the jump key has been held
 	private final float maxJumpChargeTime = 2f; // Maximum time the jump can be charged (in seconds)
 	private final float baseJumpSpeed = -1.25f * Game.SCALE; // Minimum jump speed
-	private final float maxJumpSpeed = -2.25f * Game.SCALE; // Maximum jump speed (for max charge)
+	//private final float maxJumpSpeed = -2.25f * Game.SCALE; // Maximum jump speed (for max charge)
 	private float jumpForce = 0f;
+	private int jumpCount = 0;
+	private int maxJumps = 2;
+	private boolean isDoubleJump = false;
+	private float doubleJumpSpeed = -2.0f * Game.SCALE;
+	private long doubleJumpStartTime = 0;
+
 
 	// StatusBarUI
 	private BufferedImage statusBarImg;
@@ -171,6 +177,8 @@ public class Player extends Entity {
 
 		updateAnimationTick();
 		setAnimation();
+
+
 	}
 
 	private void checkInsideWater() {
@@ -239,7 +247,7 @@ public class Player extends Entity {
 
 	public void render(Graphics g, int lvlOffset) {
 		g.drawImage(animations[state][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX, (int) (hitbox.y - yDrawOffset + (int) (pushDrawOffset)), width * flipW, height, null);
-		drawHitbox(g, lvlOffset);
+//		drawHitbox(g, lvlOffset);
 //		drawAttackBox(g, lvlOffset);
 		drawUI(g);
 	}
@@ -350,8 +358,24 @@ public class Player extends Entity {
 		}
 
 		if (jump) {
-			jump();
-			decideSpeed = walkSpeed;
+
+			if(isDoubleJump)
+			{
+				doubleJump();
+				decideSpeed = 0.9f*Game.SCALE;
+				long elapsed = System.currentTimeMillis() - doubleJumpStartTime;
+				// End Double Jump effect after n seconds
+				if (elapsed >= 3000) {
+					this.isDoubleJump = false; // Reset to hold jump
+				}
+
+			}
+			else {
+				//hold jump
+				jump();
+				decideSpeed = walkSpeed;
+			}
+
 		}
 
 		if (!inAir)
@@ -362,7 +386,7 @@ public class Player extends Entity {
 
 		//float xSpeed = 0;
 
-		if (left && !right && !inAir) {
+		if ((left && !right && !inAir)|| (left && !right && isDoubleJump)){
 			xSpeed -= walkSpeed;
 			direction = -1;
 			flipX = width;
@@ -371,7 +395,7 @@ public class Player extends Entity {
 //			jump();
 //			decideSpeed = walkSpeed;
 		}
-		if (right && !left && !inAir ) {
+		if ((right && !left && !inAir ) || (right && !left && isDoubleJump)){
 			xSpeed += walkSpeed;
 			direction = 1;
 			flipX = 0;
@@ -420,8 +444,7 @@ public class Player extends Entity {
 	private void jump() {
 		if (inAir) {
 			jump =false;
-//			left = false;
-//			right =false;
+
 			return;
 		}
 		playing.getGame().getAudioPlayer().playEffect(AudioPlayer.JUMP);
@@ -429,6 +452,20 @@ public class Player extends Entity {
 		airSpeed = jumpForce * baseJumpSpeed;
 
 
+	}
+
+	private void doubleJump() //help to jump again
+	{
+		if(inAir && (jumpCount >= maxJumps)) {
+			jump = false;
+
+			return;
+		}
+
+		inAir = true;
+		airSpeed = doubleJumpSpeed;
+		jumpCount = jumpCount + 1;
+		setJump(false);
 	}
 
 	private void jumpBack() {
@@ -442,6 +479,7 @@ public class Player extends Entity {
 	private void resetInAir() {
 		inAir = false;
 		airSpeed = 0;
+		jumpCount = 0;
 	}
 
 	public void updateXPos(float xSpeed) {
@@ -456,7 +494,18 @@ public class Player extends Entity {
 		}
 	}
 
+	public void changeDoubleJump(boolean isDoubleJump) {
+
+
+//		if (!this.isDoubleJump)
+//		{
+//			return; //  Prevent overlapping effects
+//		}
+		this.isDoubleJump = isDoubleJump;
+		doubleJumpStartTime = System.currentTimeMillis();
+	}
 	public void changeHealth(int value) {
+
 		if (value < 0) {
 			if (state == HIT)
 				return;
@@ -546,6 +595,11 @@ public class Player extends Entity {
 	}
 	public float getJumpChargeTime() {
 		return jumpChargeTime ;
+
+	}
+
+	public  void setDoubleJump(boolean isDoubleJump)
+	{
 
 	}
 
