@@ -367,7 +367,7 @@ public class Player extends Entity {
 				decideSpeed = 0.9f*Game.SCALE;
 				long elapsed = System.currentTimeMillis() - doubleJumpStartTime;
 				// End Double Jump effect after n seconds
-				if (elapsed >= 7000) {
+				if (elapsed >= 10000) {
 					this.isDoubleJump = false; // Reset to hold jump
 				}
 
