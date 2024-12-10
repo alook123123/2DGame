@@ -19,7 +19,7 @@ public class Rain {
 	// computer power. Disable it if the game lags.
 	public Rain() {
 		rand = new Random();
-		drops = new Point2D.Float[1000];
+		drops = new Point2D.Float[652];
 		rainParticle = LoadSave.GetSpriteAtlas(LoadSave.RAIN_PARTICLE);
 		initDrops();
 	}

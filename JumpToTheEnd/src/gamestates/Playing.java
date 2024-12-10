@@ -80,8 +80,8 @@ public class Playing extends State implements Statemethods {
 		initClasses();
 
 		backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PLAYING_BG_IMG);
-		bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
-		smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
+		//bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
+		//smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
 		smallCloudsPos = new int[8];
 		for (int i = 0; i < smallCloudsPos.length; i++)
 			smallCloudsPos[i] = (int) (90 * Game.SCALE) + rnd.nextInt((int) (100 * Game.SCALE));
@@ -144,6 +144,9 @@ public class Playing extends State implements Statemethods {
 	}
 
 	private void initClasses() {
+
+		rain = new Rain();
+
 		levelManager = new LevelManager(game);
 		enemyManager = new EnemyManager(this);
 		objectManager = new ObjectManager(this);
@@ -157,7 +160,7 @@ public class Playing extends State implements Statemethods {
 		levelCompletedOverlay = new LevelCompletedOverlay(this);
 		gameCompletedOverlay = new GameCompletedOverlay(this);
 
-		rain = new Rain();
+
 	}
 
 	@Override
@@ -310,7 +313,7 @@ public class Playing extends State implements Statemethods {
 
 	private void setDrawRainBoolean() {
 		// This method makes it rain 20% of the time you load a level.
-		if (rnd.nextFloat() >= 0.8f)
+		//if (rnd.nextFloat() >= 0.8f)
 			drawRain = true;
 	}
 

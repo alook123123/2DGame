@@ -66,7 +66,7 @@ public class Level {
 	}
 
 	private void loadLevelData(int redValue, int x, int y) {
-		if (redValue >= 50)
+		if (redValue >= 240)
 			lvlData[y][x] = 0;
 		else
 			lvlData[y][x] = redValue;

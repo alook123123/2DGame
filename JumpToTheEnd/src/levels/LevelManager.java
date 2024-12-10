@@ -45,12 +45,22 @@ public class LevelManager {
 			levels.add(new Level(img));
 	}
 
+//	private void importOutsideSprites() {
+//		BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
+//		levelSprite = new BufferedImage[48];
+//		for (int j = 0; j < 4; j++)
+//			for (int i = 0; i < 12; i++) {
+//				int index = j * 12 + i;
+//				levelSprite[index] = img.getSubimage(i * 32, j * 32, 32, 32);
+//			}
+//	}
+
 	private void importOutsideSprites() {
 		BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
-		levelSprite = new BufferedImage[48];
-		for (int j = 0; j < 4; j++)
-			for (int i = 0; i < 12; i++) {
-				int index = j * 12 + i;
+		levelSprite = new BufferedImage[240];
+		for (int j = 0; j < 8; j++)
+			for (int i = 0; i < 30; i++) {
+				int index = j * 30 + i;
 				levelSprite[index] = img.getSubimage(i * 32, j * 32, 32, 32);
 			}
 	}
