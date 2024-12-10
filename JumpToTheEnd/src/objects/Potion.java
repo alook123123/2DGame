@@ -16,7 +16,7 @@ public class Potion extends GameObject {
 		xDrawOffset = (int) (3 * Game.SCALE);
 		yDrawOffset = (int) (2 * Game.SCALE);
 
-		maxHoverOffset = (int) (15ad * Game.SCALE);
+		maxHoverOffset = (int) (15 * Game.SCALE);
 	}
 
 	public void update() {
