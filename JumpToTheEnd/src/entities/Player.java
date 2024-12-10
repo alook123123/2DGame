@@ -23,8 +23,10 @@ public class Player extends Entity {
 	private boolean moving = false, attacking = false;
 	private boolean left, right, jump;
 	private int[][] lvlData;
+//	private float xDrawOffset = 21 * Game.SCALE;
+//	private float yDrawOffset = 4 * Game.SCALE;
 	private float xDrawOffset = 21 * Game.SCALE;
-	private float yDrawOffset = 4 * Game.SCALE;
+	private float yDrawOffset = 19 * Game.SCALE;
 
 	// Jumping / Gravity
 	//private float jumpSpeed = -2.5f * Game.SCALE;
@@ -95,7 +97,7 @@ public class Player extends Entity {
 		this.currentHealth = maxHealth;
 		this.walkSpeed = Game.SCALE * 1.0f;
 		loadAnimations();
-		initHitbox(19, 27);
+		initHitbox(15, 15);
 		initAttackBox();
 	}
 
@@ -246,7 +248,7 @@ public class Player extends Entity {
 //	}
 
 	public void render(Graphics g, int lvlOffset) {
-		g.drawImage(animations[state][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX, (int) (hitbox.y - yDrawOffset + (int) (pushDrawOffset)), width * flipW, height, null);
+		g.drawImage(animations[state][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX, (int) (hitbox.y - yDrawOffset + (int) (pushDrawOffset)), width * flipW, height+50, null);
 //		drawHitbox(g, lvlOffset);
 //		drawAttackBox(g, lvlOffset);
 		drawUI(g);
@@ -544,8 +546,10 @@ public class Player extends Entity {
 		BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 		animations = new BufferedImage[7][8];
 		for (int j = 0; j < animations.length; j++)
-			for (int i = 0; i < animations[j].length; i++)
-				animations[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
+			for (int i = 0; i < animations[j].length; i++) {
+				//animations[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
+				animations[j][i] = img.getSubimage(i * 128, j * 128, 128, 128);
+			}
 
 		//statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
 	}

@@ -16,7 +16,7 @@ public class Potion extends GameObject {
 		xDrawOffset = (int) (3 * Game.SCALE);
 		yDrawOffset = (int) (2 * Game.SCALE);
 
-		maxHoverOffset = (int) (10 * Game.SCALE);
+		maxHoverOffset = (int) (15ad * Game.SCALE);
 	}
 
 	public void update() {
@@ -25,7 +25,7 @@ public class Potion extends GameObject {
 	}
 
 	private void updateHover() {
-		hoverOffset += (0.075f * Game.SCALE * hoverDir);
+		hoverOffset += (0.05f * Game.SCALE * hoverDir);
 
 		if (hoverOffset >= maxHoverOffset)
 			hoverDir = -1;

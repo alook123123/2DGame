@@ -5,7 +5,7 @@ import main.Game;
 public class Constants {
 
 	public static final float GRAVITY = 0.04f * Game.SCALE;
-	public static final int ANI_SPEED = 25;
+	public static final int ANI_SPEED = 35;//25
 
 	public static class Dialogue {
 		public static final int QUESTION = 0;
@@ -276,17 +276,17 @@ public class Constants {
 			case DEAD:
 				return 8;
 			case RUNNING:
-				return 6;
+				return 3;
 			case IDLE:
-				return 5;
+				return 3;
 			case HIT:
 				return 4;
 			case JUMP:
 			case ATTACK:
-				return 3;
+				return 4;
 			case FALLING:
 			default:
-				return 1;
+				return 5;
 			}
 		}
 	}
