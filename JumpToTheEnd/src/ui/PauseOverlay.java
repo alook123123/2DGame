@@ -29,7 +29,7 @@ public class PauseOverlay {
 		int menuX = (int) (313 * Game.SCALE);
 		int replayX = (int) (387 * Game.SCALE);
 		int unpauseX = (int) (462 * Game.SCALE);
-		int bY = (int) (325 * Game.SCALE);
+		int bY = (int) (270 * Game.SCALE);
 
 		menuB = new UrmButton(menuX, bY, URM_SIZE, URM_SIZE, 2);
 		replayB = new UrmButton(replayX, bY, URM_SIZE, URM_SIZE, 1);
