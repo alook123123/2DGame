@@ -48,7 +48,8 @@ public class Playing extends State implements Statemethods {
 	private int rightBorder = (int) (0.75 * Game.GAME_WIDTH);
 	private int maxLvlOffsetX;
 
-	private BufferedImage backgroundImg, bigCloud, smallCloud, shipImgs[];
+	private BufferedImage backgroundImg, smallCloud, shipImgs[];
+	private BufferedImage bigCloud;
 	private BufferedImage[] questionImgs, exclamationImgs;
 	private ArrayList<DialogueEffect> dialogEffects = new ArrayList<>();
 
@@ -81,7 +82,7 @@ public class Playing extends State implements Statemethods {
 
 		backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.PLAYING_BG_IMG);
 		//bigCloud = LoadSave.GetSpriteAtlas(LoadSave.BIG_CLOUDS);
-		//smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
+		smallCloud = LoadSave.GetSpriteAtlas(LoadSave.SMALL_CLOUDS);
 		smallCloudsPos = new int[8];
 		for (int i = 0; i < smallCloudsPos.length; i++)
 			smallCloudsPos[i] = (int) (90 * Game.SCALE) + rnd.nextInt((int) (100 * Game.SCALE));
@@ -249,7 +250,7 @@ public class Playing extends State implements Statemethods {
 
 	@Override
 	public void draw(Graphics g) {
-		g.drawImage(backgroundImg, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
+		g.drawImage(backgroundImg, 0, -50, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
 
 		drawClouds(g);
 		if (drawRain)

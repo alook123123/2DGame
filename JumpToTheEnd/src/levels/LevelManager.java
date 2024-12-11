@@ -71,9 +71,9 @@ public class LevelManager {
 				int index = levels.get(lvlIndex).getSpriteIndex(i, j);
 				int x = Game.TILES_SIZE * i - lvlOffset;
 				int y = Game.TILES_SIZE * j;
-				if (index == 48)
+				if (index == 240)
 					g.drawImage(waterSprite[aniIndex], x, y, Game.TILES_SIZE, Game.TILES_SIZE, null);
-				else if (index == 49)
+				else if (index == 241)
 					g.drawImage(waterSprite[4], x, y, Game.TILES_SIZE, Game.TILES_SIZE, null);
 				else
 					g.drawImage(levelSprite[index], x, y, Game.TILES_SIZE, Game.TILES_SIZE, null);

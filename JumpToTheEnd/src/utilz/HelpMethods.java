@@ -35,8 +35,8 @@ public class HelpMethods {
 	public static boolean IsEntityInWater(Rectangle2D.Float hitbox, int[][] lvlData) {
 		// Will only check if entity touch top water. Can't reach bottom water if not
 		// touched top water.
-		if (GetTileValue(hitbox.x, hitbox.y + hitbox.height, lvlData) != 48)
-			if (GetTileValue(hitbox.x + hitbox.width, hitbox.y + hitbox.height, lvlData) != 48)
+		if (GetTileValue(hitbox.x, hitbox.y + hitbox.height, lvlData) != 240)
+			if (GetTileValue(hitbox.x + hitbox.width, hitbox.y + hitbox.height, lvlData) != 240)
 				return false;
 		return true;
 	}
@@ -51,7 +51,7 @@ public class HelpMethods {
 		int value = lvlData[yTile][xTile];
 
 		switch (value) {
-		case 11, 48, 49:
+		case 11, 198, 240,241 :
 			return false;
 		default:
 			return true;
