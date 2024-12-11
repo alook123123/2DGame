@@ -14,7 +14,7 @@ public class LoadSave {
 	//public static final String PLAYER_ATLAS = "player_sprites.png";
 	public static final String PLAYER_ATLAS = "player_Sprite_new2.png";
 	//public static final String LEVEL_ATLAS = "outside_sprites.png";
-	public static final String LEVEL_ATLAS = "5D.png";
+	public static final String LEVEL_ATLAS = "outside_sprites_3.png";
 	public static final String MENU_BUTTONS = "button_atlas_new_ulti.png";
 	public static final String MENU_BACKGROUND = "menu_background_new.png";
 	public static final String PAUSE_BACKGROUND = "pause_menu_new.png";
@@ -23,7 +23,7 @@ public class LoadSave {
 	public static final String VOLUME_BUTTONS = "volume_buttons_new.png";
 	public static final String MENU_BACKGROUND_IMG = "background_menu.png";
 	//public static final String PLAYING_BG_IMG = "playing_bg_img.png";
-	public static final String PLAYING_BG_IMG = "3D.png";
+	public static final String PLAYING_BG_IMG = "Night_background.png";
 	public static final String BIG_CLOUDS = "big_clouds.png";
 	public static final String SMALL_CLOUDS = "small_clouds.png";
 	public static final String CRABBY_SPRITE = "crabby_sprite.png";
