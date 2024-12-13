@@ -21,7 +21,7 @@ public class LoadSave {
 	public static final String SOUND_BUTTONS = "sound_button.png";
 	public static final String URM_BUTTONS = "urm_buttons_new.png";
 	public static final String VOLUME_BUTTONS = "volume_buttons_new.png";
-	public static final String MENU_BACKGROUND_IMG = "background_menu.png";
+	public static final String MENU_BACKGROUND_IMG = "background_menu_2.png";
 	//public static final String PLAYING_BG_IMG = "playing_bg_img.png";
 	public static final String PLAYING_BG_IMG = "Night_background.png";
 	public static final String BIG_CLOUDS = "big_clouds.png";
@@ -35,7 +35,7 @@ public class LoadSave {
 	public static final String CANNON_ATLAS = "cannon_atlas.png";
 	public static final String CANNON_BALL = "ball.png";
 	public static final String DEATH_SCREEN = "death_screen.png";
-	public static final String OPTIONS_MENU = "options_background.png";
+	public static final String OPTIONS_MENU = "pause_menu_new.png";
 	public static final String PINKSTAR_ATLAS = "pinkstar_atlas.png";
 	public static final String QUESTION_ATLAS = "question_atlas.png";
 	public static final String EXCLAMATION_ATLAS = "exclamation_atlas.png";
