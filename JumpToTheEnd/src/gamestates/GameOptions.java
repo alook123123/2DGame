@@ -28,7 +28,7 @@ public class GameOptions extends State implements Statemethods {
 
 	private void loadButton() {
 		int menuX = (int) (387 * Game.SCALE);
-		int menuY = (int) (325 * Game.SCALE);
+		int menuY = (int) (270 * Game.SCALE);
 
 		menuB = new UrmButton(menuX, menuY, URM_SIZE, URM_SIZE, 2);
 	}
@@ -40,7 +40,7 @@ public class GameOptions extends State implements Statemethods {
 		bgW = (int) (optionsBackgroundImg.getWidth() * Game.SCALE);
 		bgH = (int) (optionsBackgroundImg.getHeight() * Game.SCALE);
 		bgX = Game.GAME_WIDTH / 2 - bgW / 2;
-		bgY = (int) (33 * Game.SCALE);
+		bgY = (int) (25 * Game.SCALE);
 	}
 
 	@Override
